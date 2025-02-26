@@ -1,25 +1,42 @@
-intl2<-15L
-num1<-33
-class(num1)
-num1<-as.numeric(24L)
-num1
-num2<-as.numeric(25-26i)
-num2
-num3<-as.numeric(TRUE)
-num3
-num4<-as.numeric("adsdds456")
-num4
-num5<-as.numeric("123456")
-num5
-int5<-as.integer(52.6544)
-int5
-class(int5)
-a<-7.5
-b<-2
-print(a*b)#Multiplication
-print(a%%b)#Reminder
-print(a%/%b)#Quotient
-print(a/b)#Division
-print(a-b)#Substraction
-print(a^b)#power
-print(a+b)#Addition
+# makeCacheMatrix Function
+makeCacheMatrix <- function(x = matrix()) {
+    inv <- NULL  # Initialize the inverse as NULL
+    
+    # Setter for the matrix
+    set <- function(y) {
+        x <<- y
+        inv <<- NULL  # Reset the cached inverse when the matrix changes
+    }
+    
+    # Getter for the matrix
+    get <- function() x
+    
+    # Setter for the inverse
+    setInverse <- function(inverse) inv <<- inverse
+    
+    # Getter for the inverse
+    getInverse <- function() inv
+    
+    # Return a list of functions
+    list(set = set, get = get,
+         setInverse = setInverse,
+         getInverse = getInverse)
+}
+
+# cacheSolve Function
+cacheSolve <- function(x, ...) {
+    # Check if the inverse is already cached
+    inv <- x$getInverse()
+    if (!is.null(inv)) {
+        message("getting cached data")
+        return(inv)  # Return the cached inverse
+    }
+    
+    # If not cached, compute the inverse
+    data <- x$get()  # Get the matrix
+    inv <- solve(data, ...)  # Compute the inverse
+    x$setInverse(inv)  # Cache the inverse
+    
+    # Return the inverse
+    inv
+}
