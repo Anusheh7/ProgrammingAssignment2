@@ -1,15 +1,25 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-
-}
-
-
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-}
+intl2<-15L
+num1<-33
+class(num1)
+num1<-as.numeric(24L)
+num1
+num2<-as.numeric(25-26i)
+num2
+num3<-as.numeric(TRUE)
+num3
+num4<-as.numeric("adsdds456")
+num4
+num5<-as.numeric("123456")
+num5
+int5<-as.integer(52.6544)
+int5
+class(int5)
+a<-7.5
+b<-2
+print(a*b)#Multiplication
+print(a%%b)#Reminder
+print(a%/%b)#Quotient
+print(a/b)#Division
+print(a-b)#Substraction
+print(a^b)#power
+print(a+b)#Addition
